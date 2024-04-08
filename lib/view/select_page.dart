@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_games/view/numeron_page.dart';
 
 class SelectPage extends StatelessWidget {
   const SelectPage({super.key});
@@ -16,7 +17,12 @@ class SelectPage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               child: const Text('Numeron'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NumeronPage()));
+              },
             ),
           ],
         ),
