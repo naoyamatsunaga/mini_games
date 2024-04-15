@@ -8,17 +8,36 @@ class NumeronPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Select MiniGame'),
+        title: const Text('Numeron'),
       ),
       body: Center(
-          child: Column(
-        children: [
-          ElevatedButton(
-            child: const Text('Start'),
-            onPressed: () {},
-          ),
-        ],
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '?',
+                    style: TextStyle(
+                      fontSize: 50,
+                    ),
+                  ),
+                  Text('?'),
+                  Text('?'),
+                ],
+              ),
+            ),
+            Container(
+              width: 100,
+              child: TextField(
+                maxLength: 3,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
