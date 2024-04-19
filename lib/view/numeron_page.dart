@@ -19,7 +19,7 @@ class NumeronPage extends StatelessWidget {
           children: <Widget>[
             // 余白をつけたいWidgetはPaddingで囲むことができる
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(0),
               // padding: EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -49,18 +49,58 @@ class NumeronPage extends StatelessWidget {
 
             //リスト_START//////////////////////////////
             Expanded(
-              flex: 1,
               child: ListView(
                 children: [
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
+                  AnswerItem(),
                   AnswerItem(),
                 ],
               ),
             ),
             //リスト_END//////////////////////////////
 
+            //チェックシート_START//////////////////////////////
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: Container(
+                color: Colors.yellow,
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('0'),
+                    Text('1'),
+                    Text('2'),
+                    Text('3'),
+                    Text('4'),
+                    Text('5'),
+                    Text('6'),
+                    Text('7'),
+                    Text('8'),
+                    Text('9'),
+                  ],
+                ),
+              ),
+            ),
+            //チェックシート_END///////////////////////////
+
             //回答欄_START//////////////////////////////
             Padding(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.only(bottom: 50),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
