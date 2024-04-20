@@ -17,7 +17,7 @@ class _NumeronPageState extends State<NumeronPage> {
   // 定数・変数//////////////////////////////
   final answertextsize = 80.0;
   // 回答履歴
-  List<AnswerItem> answerItems = [];
+  late List<AnswerItem> answerItems = [];
   //
   late String answerText;
 
@@ -125,7 +125,10 @@ class _NumeronPageState extends State<NumeronPage> {
                         // TODO:入力チェック作成
                         // 3桁の数字である事
                         // 同じ数字が入力されていないこと
-                        answerItems.add(AnswerItem(answerText: answerText));
+                        answerItems.add(AnswerItem(
+                          answerText: answerText,
+                          answerNumber: answerItems.length + 1,
+                        ));
                       });
                     },
                     child: const Text("GO"),
@@ -142,8 +145,10 @@ class _NumeronPageState extends State<NumeronPage> {
 }
 
 class AnswerItem extends StatelessWidget {
-  const AnswerItem({super.key, required this.answerText});
+  const AnswerItem(
+      {super.key, required this.answerText, required this.answerNumber});
 
+  final int answerNumber;
   final String answerText;
 
   @override
@@ -154,7 +159,7 @@ class AnswerItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('No.'),
+          Text('No.${answerNumber}'),
           SizedBox(width: 50),
           Text('${answerText}'),
           SizedBox(width: 50),
