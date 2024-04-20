@@ -24,7 +24,6 @@ class Numeron {
       // 同じ数字が使われないよう、1度使用された数字は削除
       workList.removeAt(index);
     }
-
     return answer;
   }
 

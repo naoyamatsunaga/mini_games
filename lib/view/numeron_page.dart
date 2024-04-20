@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:mini_games/model/numeron/numeron.dart';
 
-class NumeronPage extends StatelessWidget {
-  // 定数・変数
-  final answertextsize = 80.0;
+class NumeronPage extends StatefulWidget {
+  List<int> answer = [];
 
-  List<int> answer = [0, 0, 0];
-
-  // コンストラクタ
   NumeronPage({super.key}) {
     Numeron numeron = Numeron();
     answer = List.from(numeron.CreateRandomNumber());
   }
+
+  @override
+  State<NumeronPage> createState() => _NumeronPageState();
+}
+
+class _NumeronPageState extends State<NumeronPage> {
+  // 定数・変数
+  final answertextsize = 80.0;
+
+  List<AnswerItem> answerItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +39,19 @@ class NumeronPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '${answer[0]}',
+                    '${widget.answer[0]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
                   ),
                   Text(
-                    '${answer[1]}',
+                    '${widget.answer[1]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
                   ),
                   Text(
-                    '${answer[2]}',
+                    '${widget.answer[2]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
@@ -57,27 +63,11 @@ class NumeronPage extends StatelessWidget {
 
             //リスト_START//////////////////////////////
             Expanded(
-              child: ListView(
-                children: [
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                  AnswerItem(),
-                ],
+              child: ListView.builder(
+                itemCount: answerItems.length,
+                itemBuilder: (context, index) {
+                  return answerItems[index];
+                },
               ),
             ),
             //リスト_END//////////////////////////////
@@ -125,7 +115,11 @@ class NumeronPage extends StatelessWidget {
                   ),
                   const SizedBox(width: 50),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        answerItems.add(AnswerItem());
+                      });
+                    },
                     child: const Text("GO"),
                   )
                 ],
