@@ -1,6 +1,9 @@
 import 'dart:math';
 
 class Numeron {
+  // コンストラクタ
+  Numeron();
+
   // 桁数
   final digit = 3;
 
@@ -14,7 +17,7 @@ class Numeron {
     // 返却用リスト
     List<int> answer = [];
 
-    for (int i = 0; i > digit; i++) {
+    for (int i = 0; i < digit; i++) {
       var index = Random().nextInt(workList.length);
       answer.add(workList[index]);
 

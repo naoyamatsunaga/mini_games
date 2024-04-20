@@ -18,10 +18,8 @@ class SelectPage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Numeron'),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NumeronPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NumeronPage()));
               },
             ),
           ],

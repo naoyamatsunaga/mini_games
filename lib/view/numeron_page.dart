@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mini_games/model/numeron/numeron.dart';
 
 class NumeronPage extends StatelessWidget {
-  const NumeronPage({super.key});
-
+  // 定数・変数
   final answertextsize = 80.0;
+
+  List<int> answer = [0, 0, 0];
+
+  // コンストラクタ
+  NumeronPage({super.key}) {
+    Numeron numeron = Numeron();
+    answer = List.from(numeron.CreateRandomNumber());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +33,19 @@ class NumeronPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '?',
+                    '${answer[0]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
                   ),
                   Text(
-                    '?',
+                    '${answer[1]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
                   ),
                   Text(
-                    '?',
+                    '${answer[2]}',
                     style: TextStyle(
                       fontSize: answertextsize,
                     ),
