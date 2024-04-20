@@ -14,10 +14,12 @@ class NumeronPage extends StatefulWidget {
 }
 
 class _NumeronPageState extends State<NumeronPage> {
-  // 定数・変数
+  // 定数・変数//////////////////////////////
   final answertextsize = 80.0;
-
+  // 回答履歴
   List<AnswerItem> answerItems = [];
+  //
+  late String answerText;
 
   @override
   Widget build(BuildContext context) {
@@ -103,11 +105,14 @@ class _NumeronPageState extends State<NumeronPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(width: 100),
-                  const SizedBox(
+                  SizedBox(
                     width: 100,
                     child: TextField(
                       textAlign: TextAlign.start,
-                      style: TextStyle(
+                      onChanged: (value) {
+                        answerText = value;
+                      },
+                      style: const TextStyle(
                         fontSize: 45,
                       ),
                       maxLength: 3,
@@ -117,7 +122,10 @@ class _NumeronPageState extends State<NumeronPage> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        answerItems.add(AnswerItem());
+                        // TODO:入力チェック作成
+                        // 3桁の数字である事
+                        // 同じ数字が入力されていないこと
+                        answerItems.add(AnswerItem(answerText: answerText));
                       });
                     },
                     child: const Text("GO"),
@@ -134,19 +142,21 @@ class _NumeronPageState extends State<NumeronPage> {
 }
 
 class AnswerItem extends StatelessWidget {
-  const AnswerItem({super.key});
+  const AnswerItem({super.key, required this.answerText});
+
+  final String answerText;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 30,
       color: Colors.red,
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('No.'),
           SizedBox(width: 50),
-          Text('XXX'),
+          Text('${answerText}'),
           SizedBox(width: 50),
           Text('XEAT'),
           SizedBox(width: 30),
