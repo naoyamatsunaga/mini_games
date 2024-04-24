@@ -3,23 +3,28 @@ import 'package:mini_games/model/numeron/numeron.dart';
 
 class NumeronPage extends StatefulWidget {
   List<int> answer = [];
+  Numeron numeron = Numeron();
 
   NumeronPage({super.key}) {
-    Numeron numeron = Numeron();
     answer = List.from(numeron.CreateRandomNumber());
   }
 
   @override
-  State<NumeronPage> createState() => _NumeronPageState();
+  State<NumeronPage> createState() => _NumeronPageState(numeron: numeron);
 }
 
 class _NumeronPageState extends State<NumeronPage> {
   // 定数・変数//////////////////////////////
+  final Numeron numeron;
+
+  // 答えの文字サイズ
   final answertextsize = 80.0;
   // 回答履歴
   late List<AnswerItem> answerItems = [];
-  //
+  // 入力値
   late String answerText;
+
+  _NumeronPageState({required this.numeron});
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +130,17 @@ class _NumeronPageState extends State<NumeronPage> {
                         // TODO:入力チェック作成
                         // 3桁の数字である事
                         // 同じ数字が入力されていないこと
+
+                        // TODO:判定処理
+                        // $桁数EATの場合、終了、ボタン非活性
+                        // 終了ボタン表示
+                        var result = numeron.CheckAnswer(answerText);
+
                         answerItems.add(AnswerItem(
                           answerText: answerText,
                           answerNumber: answerItems.length + 1,
+                          eatText: result.$1,
+                          biteText: result.$2,
                         ));
                       });
                     },
@@ -145,11 +158,18 @@ class _NumeronPageState extends State<NumeronPage> {
 }
 
 class AnswerItem extends StatelessWidget {
-  const AnswerItem(
-      {super.key, required this.answerText, required this.answerNumber});
+  const AnswerItem({
+    super.key,
+    required this.answerText,
+    required this.answerNumber,
+    required this.eatText,
+    required this.biteText,
+  });
 
   final int answerNumber;
   final String answerText;
+  final int eatText;
+  final int biteText;
 
   @override
   Widget build(BuildContext context) {
@@ -163,9 +183,9 @@ class AnswerItem extends StatelessWidget {
           SizedBox(width: 50),
           Text('${answerText}'),
           SizedBox(width: 50),
-          Text('XEAT'),
+          Text('${eatText}EAT'),
           SizedBox(width: 30),
-          Text('XBITE'),
+          Text('${biteText}BITE'),
         ],
       ),
     );
