@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_games/controller/numeron_controller.dart';
 import 'package:mini_games/model/numeron/numeron.dart';
 
 class NumeronPage extends StatefulWidget {
@@ -87,7 +88,7 @@ class _NumeronPageState extends State<NumeronPage> {
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('0'),
+                    CheckButton('0'),
                     Text('1'),
                     Text('2'),
                     Text('3'),
