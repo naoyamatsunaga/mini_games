@@ -137,16 +137,30 @@ class _NumeronPageState extends State<NumeronPage> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        // 入力チェック
-                        // 同じ数字が入力されていないこと
+                        // 入力チェック(同じ数字が入力されていないこと)
                         if (numeron.IsSameNumber(answerText)) {
                           return;
                         }
-                        // TODO:判定処理
                         var result = numeron.CheckAnswer(answerText);
                         // $桁数EATの場合、終了、ボタン非活性
+                        if (result.$1 == 3) {
+                          showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                title: Text('正解！'),
+                                content: Text('ゲームを終了します。'),
+                                actions: <Widget>[
+                                  ElevatedButton(
+                                    child: Text('終了'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                         // 終了ボタン表示
-
                         answerItems.add(AnswerItem(
                           answerText: answerText,
                           answerNumber: answerItems.length + 1,
