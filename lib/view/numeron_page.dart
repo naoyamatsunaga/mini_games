@@ -123,6 +123,9 @@ class _NumeronPageState extends State<NumeronPage> {
                   SizedBox(
                     width: 100,
                     child: TextField(
+                      // 数値のみ入力可能とする
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       textAlign: TextAlign.start,
                       onChanged: (value) {
                         answerText = value;
