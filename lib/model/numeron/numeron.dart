@@ -57,4 +57,17 @@ class Numeron {
   bool IsEat(String number, int index) {
     return index == answer.indexOf(int.parse(number));
   }
+
+  bool IsSameNumber(String input) {
+    var numbers = input.split('');
+    var isExist = false;
+    for (int i = 0; i < numbers.length; i++) {
+      for (int j = i + 1; j < numbers.length; j++) {
+        if (numbers[i] == numbers[j]) {
+          isExist = true;
+        }
+      }
+    }
+    return isExist;
+  }
 }

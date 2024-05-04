@@ -127,14 +127,15 @@ class _NumeronPageState extends State<NumeronPage> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        // TODO:入力チェック作成
-                        // 3桁の数字である事
+                        // 入力チェック
                         // 同じ数字が入力されていないこと
-
+                        if (numeron.IsSameNumber(answerText)) {
+                          return;
+                        }
                         // TODO:判定処理
+                        var result = numeron.CheckAnswer(answerText);
                         // $桁数EATの場合、終了、ボタン非活性
                         // 終了ボタン表示
-                        var result = numeron.CheckAnswer(answerText);
 
                         answerItems.add(AnswerItem(
                           answerText: answerText,
