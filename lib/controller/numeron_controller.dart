@@ -27,9 +27,10 @@ class _CheckButtonState extends State<CheckButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-              color: isExist ? Colors.white : Colors.grey,
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(5)),
+            color: isExist ? Colors.white : Colors.grey,
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(5),
+          ),
           child: Text(
             widget.text,
             style: TextStyle(color: Colors.black),

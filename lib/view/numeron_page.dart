@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mini_games/controller/numeron_controller.dart';
 import 'package:mini_games/model/numeron/numeron.dart';
 
@@ -84,20 +85,28 @@ class _NumeronPageState extends State<NumeronPage> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Container(
-                color: Colors.yellow,
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: const Column(
                   children: [
-                    CheckButton('0'),
-                    Text('1'),
-                    Text('2'),
-                    Text('3'),
-                    Text('4'),
-                    Text('5'),
-                    Text('6'),
-                    Text('7'),
-                    Text('8'),
-                    Text('9'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CheckButton('0'),
+                        CheckButton('1'),
+                        CheckButton('2'),
+                        CheckButton('3'),
+                        CheckButton('4'),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CheckButton('5'),
+                        CheckButton('6'),
+                        CheckButton('7'),
+                        CheckButton('8'),
+                        CheckButton('9'),
+                      ],
+                    ),
                   ],
                 ),
               ),
